@@ -1,6 +1,6 @@
 import math
 #1
-'''for i in range(20, 9, -1):
+for i in range(20, 9, -1):
     print(i)
 
 #2
@@ -37,16 +37,15 @@ print is_prime(7) #True
 print is_prime(13) #True
 
 #6
-#def fifth_word(file):
-with open("simple.txt") as data:
-    line_counter = 1
-    for line in data:
-        if line_counter == 5:
-            print(line[4])
-        line_counter+=1
-
-#c = fifth_word("simple.txt")
-#print(c)
+def fifth(file):                              #counter idea from Wolflab, thanks Paul!
+    with open(file) as handle:
+        counter = 1
+        for line in handle:
+            if counter == 5:                  #If we are on the 5th line
+                print(line[4])                #Print the 5th element (python indexing starts at 0)
+            counter+=1                        #+= is shorthand for counter = counter + 1
+                                              #Having a counter is just an easy way to loop across the lines until you get to a certain line.
+print(fifth("simple.txt"))
 
 #7
 for i in range(1, 20):
@@ -61,7 +60,7 @@ def gompertz(a, b, c, t): #check on TI-89
     return(y)
 
 d = gompertz(100, 50, 9, 10)
-print(d)'''
+print(d)
 
 #9
 def box(length, width):                         #Inspiration from marleyhaupt1 and Wolflab
@@ -79,15 +78,18 @@ class Point: #upper case in Python
         self.x = x
         self.y = y
 #11
-class Point: #upper case in Python
-    def __init__(self, x, y):                   #always start with "self" argument
-        self.x = x
-        self.y = y
+    def distance(self, point1):                #distance is a method of class Point
+        dist= math.sqrt((self.x-point1.x)**2+(self.y-point1.y)**2)
+        return(dist)
 
-    def distance(self, point1, point2):
-        return math.sqrt((point2[x] - point1[x] ** 2 + (point2[y] - point1[y]))** 2)
+point_1 = Point(1, 1)                     #setting this up so that the distance should be 1
+point_2 = Point(1, 2)                     #point_2 is an instance of class Point
+print(point_1.distance(point_2))          #I learned how to call the function this way from bweedop
 
-point_1 = Point(self, 1, 1)                     #setting this up so that the distance should be 1
-point_2 = Point(self, 1, 2)
-distance(self, point_1, point_2)
 #12
+class Line(Point):
+    def __init__(self, point1, point2):
+        self.point1 = point1
+        self.point2 = point2
+line = Line(point_1, point_2)
+print(line)
