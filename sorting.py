@@ -20,10 +20,11 @@ def quick_sort(to_sort, bottom, top):
         quick_sort(to_sort, pivot + 1, top)
 
 def partition(to_sort, bottom, top):
-    pivot = len(to_sort)
+    pivot = to_sort[top]
     x = bottom
-    for i in bottom-(top-1):
+    for i in range(bottom, (top-1)):
         if to_sort[i] < pivot:
             to_sort[i] = to_sort[x]
-            x+=1                          #I missed +=!
+            to_sort[x] = to_sort[i]
+            x+=1                          #I missed += in R!
     return(x)
