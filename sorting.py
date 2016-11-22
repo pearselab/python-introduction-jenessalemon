@@ -11,3 +11,19 @@ def bubble_sort(to_sort):
                 print(to_sort) #I put the print statement here so that each pass through the list can be seen. Obviously if this were to be used on a huge data set, I would remove this print statement.
 
 print(bubble_sort(bubble))
+##########################################################################################
+quick = [5, 34, 9, 10, 3]
+def quick_sort(to_sort, bottom, top):
+    if bottom < top:
+        pivot = partition(to_sort, bottom , top)
+        quick_sort(to_sort, bottom, pivot - 1)
+        quick_sort(to_sort, pivot + 1, top)
+
+def partition(to_sort, bottom, top):
+    pivot = len(to_sort)
+    x = bottom
+    for i in bottom-(top-1):
+        if to_sort[i] < pivot:
+            to_sort[i] = to_sort[x]
+            x+=1                          #I missed +=!
+    return(x)
